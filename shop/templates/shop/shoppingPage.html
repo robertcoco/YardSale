@@ -1,0 +1,36 @@
+{% load static %}
+{% include 'shop/header.html' %}
+<body>
+{% include 'shop/shoppingCart.html' %}
+<div id="shoppingCart1" >
+  <div class="title-container">
+    <img src="{% static 'shop/icons/flechita.svg' %}" alt="arrow" />
+    <p class="title">My orders</p>
+  </div>
+
+  <div class="my-order-content">
+    {% for item in ItemsCarrito  %}
+    <div class="shopping-cart">
+      <figure>
+        <img
+          src="{{item.producto.img}}"
+          alt="bike"
+        />
+      </figure>
+      <p>{{item.producto.name}}</p>
+      <p>${{item.producto.price}}</p>
+      <form class = "DeleteForm" method="post" action="{% url 'shop:eliminar_item' %}">
+        {% csrf_token %}
+        <input type="hidden" name="item_id" value="{{ item.id }}">
+        <button class="buttonForm" type="submit">
+          <img src="{% static 'shop/icons/close.png' %}" alt="close" />
+        </button>
+      </form>
+    </div>
+    {% endfor %}
+      <div class = "total"><p>Total price</p><p>{{total_price}}</p></div>
+  </div>
+</div>
+<script src="{% static 'shop/main.js' %}"></script>
+</body>
+</html>

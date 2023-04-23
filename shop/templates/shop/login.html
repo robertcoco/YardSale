@@ -1,0 +1,41 @@
+{% extends 'shop/header.html' %}
+{% load static %}
+{% load socialaccount %}
+
+
+{% block css_external %}
+    <link rel="stylesheet" href="{% static 'shop/login.css' %}">
+{% endblock css_external %}
+
+{% include 'shop/messages.html' %}
+
+{% block content %}
+<body>
+    {% include 'shop/messages.html' %}        
+    <form class = "form" action="{% url 'shop:login' %}" method = "POST">
+        {% csrf_token %}
+        <div class = "fill">
+            <div class = "circle"></div>
+            <div class = "circle"></div>
+            <div class = "circle"></div>
+        </div>
+        <h1>Welcome to YardSale</h1>
+        <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" name= "username" id="username" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" name = "password" id="exampleInputPassword1">
+        </div>
+        <a href="{% provider_login_url 'google' %}">Login with Google</a>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <div>
+            <a class= "sign_up" href="{% url 'shop:register' %}">Sign up</a>
+        </div>
+    </form>
+
+</body>
+</html>
+{% endblock content %}
