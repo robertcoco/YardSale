@@ -1,4 +1,4 @@
-{% extends 'shop/header.html' %} {% load static %} {% block content %}
+{% comment %} {% comment %} {% extends 'shop/header.html' %} {% load static %} {% block content %}
 <link
   rel="stylesheet"
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="{% static 'shop/register.css' %}" />
 {% endblock css_external %} {% comment %} Creating form for the user register
 view {% endcomment %} {% block box %}
-<form class="form" action="{% url 'shop:register' %}" method="POST">
+{% comment %} <form class="form" action="{% url 'shop:register' %}" method="POST">
   {% csrf_token %}
   <div class="fill">
     <div class="circle"></div>
@@ -70,4 +70,4 @@ view {% endcomment %} {% block box %}
     >
   </div>
 </form>
-{% endblock %}
+{% endblock %} {% endcomment %} {% endcomment %} {% endcomment %}
