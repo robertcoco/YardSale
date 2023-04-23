@@ -1,1 +1,1 @@
-web: gunicorn YardSale.wsgi --log-file
+web: gunicorn YardSale.wsgi --log-file -
