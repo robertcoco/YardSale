@@ -76,8 +76,7 @@ MIDDLEWARE = [
     'shop.middleware.LoginRequiredMiddleware'
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 ROOT_URLCONF = 'YardSale.urls'
 
 TEMPLATES = [
