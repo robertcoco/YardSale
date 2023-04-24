@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.deprecation import MiddlewareMixin
 from allauth.account.views import (
-    login, signup, password_reset, password_reset_done, 
+    login, signup, password_reset, password_reset_done
 )
 
 class LoginRequiredMiddleware(MiddlewareMixin):
@@ -20,7 +20,8 @@ class LoginRequiredMiddleware(MiddlewareMixin):
         reverse('shop:logout'), 
         reverse(signup), 
         reverse(password_reset), 
-        reverse(password_reset_done),]  # lista de URLs permitidas
+        reverse(password_reset_done),
+        '/accounts/google/login/',]  # lista de URLs permitidas
       # lista de URLs permitidas
 
          # Obtener la key de la URL si se está accediendo a la página de restauración de contraseña
