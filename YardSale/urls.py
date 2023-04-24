@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from shop.views import GoogleLoginCallbackView
 from django.contrib.auth import views as auth_views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +28,6 @@ urlpatterns = [
     path('accounts/password/reset/done/', auth_views.PasswordResetDoneView.as_view(), name='account_reset_password_done'),
     path('accounts/password/reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='account_reset_password_confirm'),
     path('accounts/password/done/', auth_views.PasswordResetCompleteView.as_view(), name='account_reset_password_complete'),
-
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
