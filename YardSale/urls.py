@@ -24,7 +24,6 @@ from django.views.defaults import page_not_found
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('admin/', admin.site.urls),
     path("shop/", include("shop.urls")),
     path('accounts/', include('allauth.urls')),
     path('accounts/password/reset/', auth_views.PasswordResetView.as_view(), name='account_reset_password'),
