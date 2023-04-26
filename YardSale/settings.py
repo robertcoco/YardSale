@@ -63,7 +63,6 @@ SOCIALACCOUNT_PROVIDERS = {
         'OAUTH_PKCE_ENABLED': True,
     }
 }
-SECURE_SSL_REDIRECT = False
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',  # Agregar aquí
@@ -160,6 +159,10 @@ STATIC_ROOT = BASE_DIR/'staticfiles'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 # settings.py
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Configuración del correo electrónico para enviar correos electrónicos de recuperación de contraseña
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
