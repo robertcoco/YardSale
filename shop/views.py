@@ -125,7 +125,7 @@ def user_login(request):
     return render(request, "shop/login.html")
 
 def user_logout(request):
-    return logout_then_login(request, login_url="http://localhost:8000/accounts/login")
+    return logout_then_login(request, login_url="https://yardsale.up.railway.app/accounts/login/")
   # Redirect to a success page.
 
 def add_to_cart(request, product_id):
