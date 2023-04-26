@@ -16,7 +16,6 @@ class LoginRequiredMiddleware(MiddlewareMixin):
     def process_view(self, request, view_func, view_args, view_kwargs):
         key = view_kwargs.get('key')  
         allowed_urls = [reverse(login),
-        reverse('shop:register'),
         reverse('shop:logout'), 
         reverse(signup), 
         reverse(password_reset), 

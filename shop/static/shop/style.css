@@ -538,7 +538,12 @@ aside {
     color: var(--hospital-green);
   }
 
-  .footer{
+  .footer-li {
+    display: inline;
+  }
+  .ul-footer{
+    display: flex;
+    justify-content: space-evenly;
     height: 200px;
     margin-top: 20px;
     padding: 20px;

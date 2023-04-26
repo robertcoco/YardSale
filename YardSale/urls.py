@@ -19,8 +19,11 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from shop import views
+from django.views.defaults import page_not_found
 
 urlpatterns = [
+    path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     path("shop/", include("shop.urls")),
     path('accounts/', include('allauth.urls')),
@@ -30,7 +33,10 @@ urlpatterns = [
     path('accounts/password/done/', auth_views.PasswordResetCompleteView.as_view(), name='account_reset_password_complete'),
 ]
 
+
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
+
+handler404 = page_not_found

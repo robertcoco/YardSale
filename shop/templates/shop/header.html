@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="{% static 'shop/logos/favicon_yard_sale.svg' %}" type="image/svg" />
     <link
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap"
       rel="stylesheet"
@@ -62,7 +63,11 @@
 
       <div class="navbar-right">
         <ul>
-          <li class="navbar-email">platzi@example.com</li>
+          <li class="navbar-email">
+            {% if user.is_authenticated %}
+              {{user.email}}
+            {% endif %}
+          </li>
           <li class="navbar-shopping-cart">
             <img
               src="{% static 'shop/icons/icon_shopping_cart.svg' %}"
@@ -76,13 +81,8 @@
       <div class="desktop-menu inactive">
         <ul>
           <li>
-            <a href="/" class="title">My orders</a>
+            <a href="{% url 'shop:shopping' %}" class="title">My orders</a>
           </li>
-
-          <li>
-            <a href="/">My account</a>
-          </li>
-
           <li>
             <a href="{% url 'shop:logout' %}">Sign out</a>
           </li>

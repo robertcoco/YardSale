@@ -101,6 +101,8 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+ACCOUNT_SESSION_REMEMBER = True
+
 
 WSGI_APPLICATION = 'YardSale.wsgi.application'
 
@@ -115,7 +117,8 @@ DATABASES = {
     }
 }
 
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PATH = 'shop/'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -153,9 +156,7 @@ USE_TZ = True
 import os
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR/'staticfiles'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

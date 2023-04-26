@@ -2,7 +2,7 @@
 <aside id="shoppingCart" class="inactive">
   <div class="title-container">
     <img src="{% static 'shop/icons/flechita.svg' %}" alt="arrow" />
-    <p class="title"><a href="{% url 'shop:shopping' %}">My order</a></p>
+    <p ><a class="title" href="{% url 'shop:shopping' %}">My order</a></p>
   </div>
 
   <div class="my-order-content">
@@ -15,7 +15,7 @@
         />
       </figure>
       <p>{{item.producto.name}}</p>
-      <p>{{item.producto.price}}</p>
+      <p>${{item.producto.price}}</p>
       <form class = "delete_product" method="post" action="{% url 'shop:eliminar_item' %}">
         {% csrf_token %}
         <input type="hidden" name="item_id" value="{{ item.id }}">

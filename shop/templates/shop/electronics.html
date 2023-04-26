@@ -1,6 +1,7 @@
 {% load static %}
 {% include 'shop/header.html' %}
 <body>
+  <section class="main-container">
     {% include 'shop/shoppingCart.html' %}
     {% if product_electronics_list %}
         <div class="cards-container">
@@ -21,7 +22,7 @@
               </div>
               <figure>
                 <button>
-                  <img src="{% static 'shop/icons/icon_shopping_cart.svg' %}" alt="close">
+                  <img src="{% static 'shop/icons/bt_add_to_cart.svg' %}" alt="close">
                 </button>
               </figure>
             </div>
@@ -33,6 +34,8 @@
 
           </div>
     {% endif %}
+  </section>
+    {% include 'shop/footer.html' %}
     <script src="{% static 'shop/main.js' %}"></script>
 </body>
 </html>

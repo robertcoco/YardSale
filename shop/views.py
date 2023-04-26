@@ -26,17 +26,10 @@ class GoogleLoginCallbackView(OAuth2CallbackView, generic.View):
 def home(request):
     query = request.GET.get('q')
     if query:
-        # Dividir la cadena de consulta en palabras individuales
-        keywords = query.split()
-
-        # Lista de campos en los que se buscará
-        fields = ['name__icontains', 'category__icontains']
-
-        # Lista de consultas de búsqueda que se combinarán con OR
-        queries = [Q(**{field: keyword}) for keyword in keywords for field in fields]
-
-        # Combinar todas las consultas usando el operador OR
-        product_list = Product.objects.filter(reduce(or_, queries))
+        pattern = r'\b{}\b'.format(query)
+        product_list = Product.objects.filter(
+            Q(name__iregex=pattern) | Q(category__iregex=pattern)
+        ).distinct()
 
     else:
         product_list = Product.objects.all()
@@ -141,7 +134,12 @@ def add_to_cart(request, product_id):
         username = request.POST['username']
 
     usuario = User.objects.get(username=username)
-    carrito = Carrito.objects.get(usuario=usuario)
+    if Carrito.objects.get(usuario=usuario) is not None:
+        carrito = Carrito.objects.get(usuario=usuario)
+    else:
+        carrito = Carrito.objects.create(usuario=usuario)
+        carrito = Carrito.objects.get(usuario=usuario)
+
     producto = Product.objects.get(name=product.name)
     item = ItemCarrito.objects.create(producto=producto, carrito=carrito, cantidad=1, precio_unitario=producto.price)
     return HttpResponseRedirect(reverse("shop:detail", args = (product.id,)))

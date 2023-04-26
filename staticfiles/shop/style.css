@@ -91,7 +91,8 @@ align-items: center;
 }
 
 .inactive {
-    display: none
+    visibility: hidden;
+    opacity: 0;
 }
 
 /* Navigator */
@@ -162,12 +163,17 @@ align-items: center;
 /* Mobile menu */
 
 .mobile-menu {
-      padding:0px 24px;
-      position: absolute;
-      top : 61px;
-      background-color: #FFFFFF;
-      width: 100%;
-    }
+  padding:0px 24px;
+  position: absolute;
+  top : 61px;
+  background-color: #FFFFFF;
+  width: 100%;
+}
+.mobile-menu:not(.inactive) {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.5s ease-in-out;
+}
 .mobile-menu a {
     text-decoration: none;
     color: var(--black);
@@ -239,8 +245,9 @@ aside {
     font-size: var(--lg);
     font-weight: bold;
     text-decoration: none;
+    color: #000;
   }
-  .title a {
+  .title:hover{
     color: #ACD9B2;
     text-decoration: none;
   }
@@ -456,6 +463,10 @@ aside {
     justify-content: center;
   }
   
+  .link_button {
+    color: black;
+    text-decoration: none;
+  }
 
   /* Product list */
   .cards-container {
@@ -538,13 +549,101 @@ aside {
     color: var(--hospital-green);
   }
 
-  .footer{
+  .text-light{
+    color: #f8f9fa;
+    text-decoration: none;
+    transition: all .5s;
+  }
+
+  .text-light:hover {
+    color: #111!important;
+  }
+
+  .login, .signup{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .errorlist li {
+    color:#f00;
+  }
+
+  .d-grid {
+    display: grid!important;
+    row-gap: 10px;
+    width: 200px;
+  }
+
+  .d-grid a {
+    text-align: center;
+  }
+
+  .d-grid a:hover{
+    color: #7fc989;
+  }
+
+  .login input, label {
+    width: 200px;
+    padding: 10px;
+  }
+
+  .login a {
+    text-decoration: none;
+    color: #ACD9B2;
+  }
+  .signup input, label {
+    width: 200px;
+    padding:10px;
+  }
+
+  .btn-dark {
+    border: none;
+    background-color:#ACD9B2;
+  }
+
+  .bg-dark{
+    background-color: #ACD9B2!important;
+  }
+
+  .socialaccount_providers a {
+    color: #ACD9B2;
+    text-decoration: none;
+  }
+
+  .primaryAction {
+    background-color: #7fc989;
+    border: none;
+  }
+
+  .secondaryAction {
+    text-decoration: none;
+  }
+
+  .footer {
     height: 200px;
     margin-top: 20px;
     padding: 20px;
-    background: black;
+    background: #000;
   }
-  
+  .ul-footer{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .footer-li {
+    display: inline;
+  }
+
+  .img-footer {
+    width: 60px;
+    height: 60px;
+  }
+
+
 @media (max-width: 640px) {
     .menu {
         display: block;

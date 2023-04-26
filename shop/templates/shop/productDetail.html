@@ -13,15 +13,19 @@
           With its practical position, this bike also fulfills a decorative
           function, add your hall or workspace.
         </p>
-        <button class="primary-button add-to-cart-button">
-          <img
-            src="{% static 'shop/icons/bt_add_to_cart.svg' %}"
-            alt="add to cart"
-          />
-          Add to cart
-        </button>
+        <form action="{% url 'shop:addCart' product.id %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="username" value = "{{user.username}}">
+          <button class="primary-button add-to-cart-button">
+              <img
+                src="{% static 'shop/icons/bt_add_to_cart.svg' %}"
+                alt="add to cart"
+              /> Add to cart          
+          </button>
+        </form>
       </div>
     </div>
   </div>
+  {% include 'shop/footer.html' %}
   <script src="{% static 'shop/main.js' %}"></script>
 </body>
